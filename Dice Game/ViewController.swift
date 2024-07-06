@@ -12,25 +12,29 @@ class ViewController: UIViewController {
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
+    var leftDiceNumber = 1
+    var rightDiceNumber = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        diceImageView1.image = UIImage(named: "DiceOne")
-        
-        // Change the image to dice six after the view loads
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.diceImageView1.image = UIImage(named: "DiceThree")
-        }
-        
-        
-        diceImageView2.image = UIImage(named: "DiceOne")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.diceImageView2.image = UIImage(named: "DiceTwo")
-        }
+//        diceImageView1.image = UIImage(named: "DiceFour")
+//        diceImageView2.image = UIImage(named: "DiceSix")
     }
 
 
+    @IBAction func rollButtonPressed(_ sender: UIButton) {
+        
+//        diceImageView1.image = UIImage(named: "DiceTwo")
+//        diceImageView2.image = UIImage(named: "DiceOne")
+        diceImageView1.image = [UIImage(named: "DiceOne"), UIImage(named: "DiceTwo"), UIImage(named: "DiceThree"), UIImage(named: "DiceFour"), UIImage(named: "DiceFive"), UIImage(named: "DiceSix")] [leftDiceNumber]
+        
+        leftDiceNumber = leftDiceNumber + 1
+        
+        diceImageView2.image = [UIImage(named: "DiceOne"), UIImage(named: "DiceTwo"), UIImage(named: "DiceThree"), UIImage(named: "DiceFour"), UIImage(named: "DiceFive"), UIImage(named: "DiceSix")] [rightDiceNumber]
+        
+        rightDiceNumber = rightDiceNumber - 1
+    }
 }
 
